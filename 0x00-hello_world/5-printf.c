@@ -1,7 +1,7 @@
 #include <stdio.h>
-/*
- *main - Prints out a script to stdout.
- *Return: 0 if Success
+/**
+ * main - Entry point
+ * Return: Always 0 (Success)
  */
 int main(void)
 {
