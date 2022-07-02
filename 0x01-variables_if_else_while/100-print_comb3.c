@@ -1,25 +1,26 @@
 #include <stdio.h>
+
 /**
-*main - print 00 to 99 with no duplicate digits or combos: no 11, no 10 (01)
-*Return: Always 0 (Success)
-*/
+ * main - prints the numbers from 00 to 99
+ * Return: Always 0 (success)
+ */
 int main(void)
 {
-        int ones;
-        int tens;
-        for (tens = '0'; tens <= '9'; tens++) /*increment tens*/
-        {
-        for (ones = (tens + 1); ones <= '9'; ones++) /*one's ten+1*/
-        {
-        putchar(tens);
-        putchar(ones);
-        if (tens != '8' || ones != '9') /*print commas*/
-        {
-        putchar(',');
-        putchar(' ');
-        }
-        }
-        }
-        putchar('\n');
-        return (0);
+	int n, m;
+
+	for (n = 48; n <= 57; n++)
+	{
+		for (m = 48; m <= 57; m++)
+		{
+			putchar(n);
+			putchar(m);
+			if (n != 57 || m != 57)
+			{
+				putchar(',');
+				putchar(' ');
+			}
+		}
+	}
+	putchar('\n');
+	return (0);
 }
