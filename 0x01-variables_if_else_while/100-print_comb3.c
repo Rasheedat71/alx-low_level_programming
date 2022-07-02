@@ -1,27 +1,25 @@
 #include <stdio.h>
-#include <stdlib.h>
 /**
- * main - return 0
- *
- * Return: Always (Success)
- */
-
+*main - print 00 to 99 with no duplicate digits or combos: no 11, no 10 (01)
+*Return: Always 0 (Success)
+*/
 int main(void)
 {
-int digit1, digit2;
-
-for (digit1 = 0; digit1 < 10; digit1++)
+int ones;
+int tens;
+for (tens = '0'; tens <= '9'; tens++) /*increment tens*/
 {
-for (digit2 = digit1 + 1; digit2 < 10; digit2++)
+for (ones = (tens + 1); ones <= '9'; ones++) /*one's ten+1*/
 {
-putchar((digit1 % 10) + '0');
-putchar((digit2 % 10) + '0');
-if (digit1 == 8 && digit2 == 9)
-continue;
+putchar(tens);
+putchar(ones);
+if (tens != '8' || ones != '9') /*print commas*/
+{
 putchar(',');
 putchar(' ');
 }
 }
-putchar('\n')
+}
+putchar('\n');
 return (0);
 }
