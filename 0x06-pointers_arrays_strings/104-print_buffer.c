@@ -2,53 +2,53 @@
 #include <stdio.h>
 
 /**
- * isPrintableASCII - determines if n is a printable ASCII char
- * @n: integer
- * Return: 1 if true, 0 if false
+ * print_buffer - Prints a buffer 10 bytes at a time, starting with
+ * the byte position, then showing the hex content,
+ * then displaying printable charcaters.
+ * @b: The buffer to be printed.
+ * @size: The number of bytes to be printed from the buffer.
  */
-int isPrintableASCII(int n)
+
+void print_buffer(char *b, int size)
+
 {
-	return (n >= 32 && n <= 126);
+int byte, index;
+for (byte = 0; byte < size; byte += 10)
+{
+printf("%08x: ", byte);
+for (index = 0; index < 10; index++)
+{
+
+if ((index + byte) >= size)
+printf("  ");
+
+else
+printf("%02x", *(b + index + byte));
+
+if ((index % 2) != 0 && index != 0)
+printf(" ");
 }
 
-/**
- * printHexes - print hex values for string b in formatted form
- * @b: string to print
- * @start: starting position
- * @end: ending position
- */
-void printHexes(char *b, int start, int end)
+for (index = 0; index < 10; index++)
 {
-	int i = 0;
 
-	while (i < 10)
-	{
-		if (i < end)
-			printf("%02x", *(b + start + i));
-		else
-			printf("  ");
-		if (i % 2)
-			printf(" ");
-		i++;
-	}
+if ((index + byte) >= size)
+break;
+
+else if (*(b + index + byte) >= 31 &&
+*(b + index + byte) <= 126)
+printf("%c", *(b + index + byte));
+
+else
+printf(".");
 }
 
-/**
- * printASCII - print ascii values for string b,
- * formatted to replace nonprintable chars with '.'
- * @b: string to print
- * @start: starting position
- * @end: ending position
- */
-void printASCII(char *b, int start, int end)
-{
-	int ch, i = 0;
+if (byte >= size)
+continue;
+printf("\n");
+}
 
-	while (i < end)
-	{
-		ch = *(b + i + start);
-		if (!isPrintableASCII(ch))
-			ch = 46;
-		printf("%c", ch);
-		i++;
-	}
+if (size <= 0)
+printf("\n");
+
+}
